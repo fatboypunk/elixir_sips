@@ -1,0 +1,2 @@
+%{"bunt": {:hex, :bunt, "0.2.0", "951c6e801e8b1d2cbe58ebbd3e616a869061ddadcc4863d0a2182541acae9a38", [:mix], []},
+  "credo": {:hex, :credo, "0.8.0-rc5", "1809faa929c85ba965d8ede54f64139e119f242e323b662485585b4be1f84a35", [:mix], [{:bunt, "~> 0.2.0", [hex: :bunt, optional: false]}]}}
