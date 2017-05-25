@@ -7,6 +7,7 @@ defmodule PhoenixCommerce.Product do
     field :description, :string
     field :price, :decimal
     field :image, PhoenixCommerce.Image.Type
+    has_many :line_items, PhoenixCommerce.LineItem
 
     timestamps()
   end
@@ -15,7 +16,6 @@ defmodule PhoenixCommerce.Product do
   Builds a changeset based on the `struct` and `params`.
   """
   def changeset(struct, params \\ %{}) do
-    IO.inspect params
     struct
     |> cast(params, [:name, :description, :price])
     |> cast_attachments(params, [:image],  allow_paths: true)
