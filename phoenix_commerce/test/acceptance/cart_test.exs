@@ -51,8 +51,20 @@ defmodule PhoenixCommerce.Acceptance.CartTest do
     click add_to_cart_button
     navigate_to "/cart"
 
+    assert length(line_items) == 1
+
     change_session_to("second user")
     navigate_to "/cart"
+    assert length(line_items) == 0
+  end
+
+  test "removing an item from the cart", %{product: product} do
+    navigate_to "/products/#{product.id}"
+    click add_to_cart_button
+    navigate_to "/cart"
+    assert length(line_items) == 1
+
+    click(remove_from_cart_button(product))
     assert length(line_items) == 0
   end
 
@@ -62,4 +74,11 @@ defmodule PhoenixCommerce.Acceptance.CartTest do
   def cart_tbody, do: find_within_element(cart_table, :css, "tbody")
   def line_items, do: find_all_within_element(cart_tbody, :css, "tr")
   def add_to_cart_button, do: find_element(:css, "button.add-to-cart")
+  def remove_from_cart_button(product) do
+    product_row(product)
+    |> find_within_element(:css, ".remove-from-cart")
+  end
+  def product_row(product) do
+    find_element(:css, "tr.product-#{product.id}")
+  end
 end
