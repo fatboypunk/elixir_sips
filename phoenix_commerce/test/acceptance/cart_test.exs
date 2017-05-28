@@ -9,10 +9,10 @@ defmodule PhoenixCommerce.Acceptance.CartTest do
   alias PhoenixCommerce.Repo
 
   @upload %Plug.Upload{
-    content_type: "image/png",
-    filename: "logo-email-b32a431e5255c913b4959a8a99016066.png",
-    path: "/Users/marcel/code/elixir_sips/phoenix_commerce/test/files/logo-email-b32a431e5255c913b4959a8a99016066.png"
-  }
+          content_type: "image/png",
+          filename: "logo-email-b32a431e5255c913b4959a8a99016066.png",
+          path: "/Users/marcel/code/elixir_sips/phoenix_commerce/test/files/logo-email-b32a431e5255c913b4959a8a99016066.png"
+        }
 
   setup do
     Repo.delete_all(LineItem)
@@ -22,11 +22,7 @@ defmodule PhoenixCommerce.Acceptance.CartTest do
         name: "some product", 
         description: "some product description",
         price: Decimal.new("2.25"),
-        image: %Plug.Upload{
-          content_type: "image/png",
-          filename: "logo-email-b32a431e5255c913b4959a8a99016066.png",
-          path: "/Users/marcel/code/elixir_sips/phoenix_commerce/test/files/logo-email-b32a431e5255c913b4959a8a99016066.png"
-        }
+        image: @upload
     }) |> Repo.insert 
     {:ok, product: product}
   end
