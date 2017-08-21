@@ -14,8 +14,6 @@ config :logger, level: :warn
 config :phoenix_commerce, PhoenixCommerce.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "phoenix_commerce_test",
-  hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
-config :hound, driver: "phantomjs",
-  app_host: "http://localhost"
+config :hound, driver: "phantomjs"

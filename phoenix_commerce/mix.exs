@@ -25,7 +25,7 @@ defmodule PhoenixCommerce.Mixfile do
   end
 
   def applications(:dev) do
-     [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext, :phoenix_ecto, :postgrex, :arc_ecto]
+     [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext, :phoenix_ecto, :postgrex, :arc_ecto, :stripity_stripe]
   end
 
   # Specifies which paths to compile per environment.
@@ -45,10 +45,13 @@ defmodule PhoenixCommerce.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:hound, "~> 1.0", only: :test},
+     {:stripity_stripe, "~> 1.4", override: true},
      {:arc, "~> 0.8.0"},
      {:arc_ecto, "~> 0.7.0"},
      {:ex_aws, "~> 1.1"},
-     {:hackney, "~> 1.6.4"},
+     {:hackney, "~> 1.6.4", override: true},
+     {:poison, "~> 2.0", override: true},
+     {:httpoison, "~> 0.11.0", override: true},
      {:sweet_xml, "~> 0.6"}
     ]
   end

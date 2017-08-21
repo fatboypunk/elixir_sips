@@ -1,8 +1,6 @@
 defmodule PhoenixCommerce.Acceptance.ProductTest do
-  use ExUnit.Case
+  use PhoenixCommerce.AcceptanceCase
   use Hound.Helpers
-
-  hound_session()
 
   alias PhoenixCommerce.Product
   alias PhoenixCommerce.Repo
@@ -15,9 +13,9 @@ defmodule PhoenixCommerce.Acceptance.ProductTest do
 
   setup do
     Repo.delete_all(Product)
-    {:ok, product} =  
+    {:ok, product} =
       Product.changeset(%Product{}, %{
-        name: "some product", 
+        name: "some product",
         description: "some product description",
         price: Decimal.new("2.25"),
         image: %Plug.Upload{
@@ -25,7 +23,7 @@ defmodule PhoenixCommerce.Acceptance.ProductTest do
                     filename: "logo-email-b32a431e5255c913b4959a8a99016066.png",
                     path: "/Users/marcel/code/elixir_sips/phoenix_commerce/test/files/logo-email-b32a431e5255c913b4959a8a99016066.png"
         }
-    }) |> Repo.insert 
+    }) |> Repo.insert
     {:ok, product: product}
   end
 

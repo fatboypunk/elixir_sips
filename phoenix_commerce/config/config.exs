@@ -34,3 +34,4 @@ config :arc,
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
 
+config :stripity_stripe, secret_key: System.get_env("STRIPE_SECRET_KEY")
